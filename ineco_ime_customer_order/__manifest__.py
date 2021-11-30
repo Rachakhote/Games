@@ -7,7 +7,7 @@
     'author': "Author Name",
     'category': 'Category',
     'description': """
-    Description text
+    Description text ineco
     """,
     # data files always loaded at installation
     'data': [
