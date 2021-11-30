@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-<!--    <record id="product_product_view_form_inherit_digital" model="ir.ui.view">-->
-<!--        <field name="name">product.product.view.form.inherit.digital</field>-->
-<!--        <field name="model">product.product</field>-->
-<!--        <field name="inherit_id" ref="product.product_normal_form_view"/>-->
-<!--        <field name="arch" type="xml">-->
-<!--        </field>-->
-<!--    </record>-->
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_ime_partcode_product_product_form" model="ir.ui.view">
+            <field name="name">ime.partcode.product.product</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//notebook[last()]" position="inside">
+                    <page string="Partcode">
+                        <field name="partcode_ids">
+                            <tree string="Part Code" editable="bottom">
+                                <field name="name" />
+                                <field name="partner_id" domain="[('customer_rank','>',0)]"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                </xpath>
+
+            </field>
+        </record>
+
+
+    </data>
+
 </odoo>

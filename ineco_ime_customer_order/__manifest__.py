@@ -7,17 +7,17 @@
     'author': "Author Name",
     'category': 'Category',
     'description': """
-    Description text ineco 
-    change by pop
+    Description test modules
     """,
     # data files always loaded at installation
     'data': [
         'views/sequence.xml',
         'views/customer_order_view.xml',
-        'views/product_product_view.xml'
+        'views/product_product_view.xml',
+        'views/security.xml',
     ],
     # data files containing optionally loaded demonstration data
     'demo': [
-        'demo/demo_data.xml',
+        # 'demo/demo_data.xml',
     ],
 }
