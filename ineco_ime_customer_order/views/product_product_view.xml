@@ -12,7 +12,7 @@
                 <xpath expr="//notebook[last()]" position="inside">
                     <page string="Partcode">
                         <field name="partcode_ids">
-                            <tree string="Part Code" editable="bottom">
+                            <tree string="Part Code" >
                                 <field name="name" />
                                 <field name="partner_id" domain="[('customer_rank','>',0)]"/>
                             </tree>
