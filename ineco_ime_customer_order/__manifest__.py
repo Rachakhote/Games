@@ -7,7 +7,7 @@
     'author': "Author Name",
     'category': 'Category',
     'description': """
-    Description test modules
+    Description test modules by ekkarat
     """,
     # data files always loaded at installation
     'data': [
