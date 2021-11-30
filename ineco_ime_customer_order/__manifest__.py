@@ -7,7 +7,7 @@
     'author': "Author Name",
     'category': 'Category',
     'description': """
-    Description test modules by ekkarat
+    Description New module odoo
     """,
     # data files always loaded at installation
     'data': [
