@@ -1,1 +1,1 @@
-# Gamesza
+# Games'z Ekkarat
