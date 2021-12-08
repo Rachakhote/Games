@@ -20,11 +20,3 @@ class ProductPartCode(models.Model):
     name = fields.Char(string='Part Code', required=True)
     partner_id = fields.Many2one('res.partner', string='Customer', required=True)
     product_id = fields.Many2one('product.product', string='Product')
-
-#
-# class ProductPartcode(models.Model):
-#     _name = 'product.partcode'
-#     _description = 'Product Part Code'
-#
-#     name = fields.Char(string='Customer Product Code', required=True)
-#     partner_id = fields.One2many('')

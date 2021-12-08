@@ -7,7 +7,8 @@
     'author': "Author Name",
     'category': 'Category',
     'description': """
-    Description New module odoo
+    Description New module 
+    Change by Games
     """,
     # data files always loaded at installation
     'data': [
@@ -15,6 +16,7 @@
         'views/customer_order_view.xml',
         'views/product_product_view.xml',
         'views/security.xml',
+        'views/customer_order_report.xml',
     ],
     # data files containing optionally loaded demonstration data
     'demo': [
