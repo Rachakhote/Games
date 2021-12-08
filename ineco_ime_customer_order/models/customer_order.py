@@ -40,7 +40,7 @@ class InecoCustomerOrderLine(models.Model):
     _name = 'ineco.customer.order.line'
     _description = 'Customer Order Lines'
 
-    name = fields.Char(string='Description', required=1)
+    name = fields.Char(string='Description')
     sequence = fields.Integer(string='Sequence', default=10)
     # product_id = fields.Many2one('product.product', string='Product', required=1, domain=[('sale_ok', '=', True)])
     product_id = fields.Many2one('product.partcode', string='Product', required=1)

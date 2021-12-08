@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_report_customer_from" model="ir.actions.report">
+            <field name="name">Customer Orders</field>
+            <field name="model">ineco.customer.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ineco_ime_customer_order.report_customer_order</field>
+            <field name="report_file">ineco_ime_customer_order.report_customer_order</field>
+            <field name="print_report_name">'Order No - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="model_ineco_customer_order"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="report_customer_order">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="ineco_ime_customer_order.report_customer_order_document"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_customer_order_document">
+            <t t-call="web.layout">
+                <t t-set="doc" t-value="doc"/>
+                <t t-set="address">
+                    <div t-field="doc.partner_id"
+                    t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />
+                <p t-if="doc.partner_id.vat"><t t-esc="doc.company_id.account_fiscal_country_id.vat_label or 'Tax ID'"/>: <span t-field="doc.partner_id.vat"/></p>
+            </t>
+                <div class="page">
+                    <center>
+                        <strong>My Customer Order</strong>
+                    </center>
+                    <p/>
+                    <row>
+                        <table style="width:100%">
+                            <tr>
+                                <td style="width:25%">
+                                    <strong>Customer Name</strong>
+                                </td>
+                                <td style="width:25%">
+                                    <span t-field="doc.partner_id.name"/>
+                                </td>
+                                <td style="width:25%">
+                                    <strong>Order Number</strong>
+                                </td>
+                                <td style="width:25%">
+                                    <span t-field="doc.name"/>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="width:25%">
+                                    <strong>Reference</strong>
+                                </td>
+                                <td style="width:25%">
+                                    <span t-field="doc.order_refer"/>
+                                </td>
+                                <td style="width:25%">
+                                    <strong>Order Data</strong>
+                                </td>
+                                <td style="width:25%">
+                                    <span t-field="doc.date_order" t-options="{'widget': 'date'}"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </row>
+
+                    <p/>
+                    <row>
+                        <table style="width:100%">
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <strong>No</strong>
+                                    </td>
+                                    <td style="width:50%">
+                                        <strong>Product</strong>
+                                    </td>
+                                    <td style="width:25%">
+                                        <strong>Order Qty</strong>
+                                    </td>
+                                    <td style="width:25%">
+                                        <strong>Ship Date</strong>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <body>
+                                <t t-set="number" t-value="1"/>
+                                <t t-foreach="doc.order_line_ids " t-as="line">
+                                    <tr>
+                                        <td>
+                                            <t t-esc="number"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.product_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.order_qty"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.date_shipment" t-options="{'widget': 'date'}"/>
+                                        </td>
+                                    </tr>
+
+                                    <t t-set="number" t-value="number + 1"/>
+
+                                </t>
+                            </body>
+                        </table>
+                    </row>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

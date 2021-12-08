@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <odoo>
     <data>
 
@@ -12,19 +13,15 @@
                 <xpath expr="//notebook[last()]" position="inside">
                     <page string="Partcode">
                         <field name="partcode_ids">
-                            <tree string="Part Code" >
+                            <tree string="Part Code" editable="bottom">
                                 <field name="name" />
                                 <field name="partner_id" domain="[('customer_rank','>',0)]"/>
                             </tree>
                         </field>
                     </page>
-
                 </xpath>
 
             </field>
         </record>
-
-
     </data>
-
 </odoo>
