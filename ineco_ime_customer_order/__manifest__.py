@@ -15,6 +15,7 @@
         'views/customer_order_view.xml',
         'views/product_product_view.xml',
         'views/security.xml',
+        'views/customer_order_report.xml',
     ],
     # data files containing optionally loaded demonstration data
     'demo': [
