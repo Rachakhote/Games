@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <template id="report_customer_sticker">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="ineco_ime_customer_order.report_customer_sticker_document"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_customer_sticker_document">
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="doc"/>
+                <t t-set="address">
+<!--                    <div t-field="doc.partner_id"-->
+<!--                    t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}' />-->
+<!--                <p t-if="doc.partner_id.vat"><t t-esc="doc.company_id.account_fiscal_country_id.vat_label or 'Tax ID'"/>: <span t-field="doc.partner_id.vat"/></p>-->
+                </t>
+
+                <div class="page" style="font-size:25px;">
+                    <p style="margin-top: -20px">
+                        <span>ห้างหุ้นส่วนจำกัด อินีโค(สำนักงานใหญ่)</span>
+                    </p>
+                    <p style="margin-top: -20px">
+                        <span>74/6 หมู่ 20 ถนนเทพารักษ์ ตำบลบางพลีใหญ่</span>
+                    </p>
+                    <p style="margin-top: -20px">
+                        <span>อำเภอบางพลี จังหวัดสมุทรปราการ</span>
+                    </p>
+                    <p style="margin-top: -20px">
+                        <span>10540</span>
+                    </p>
+                    <p style="margin-top: -20px">
+                        <span>(089-130-6226)</span>
+                    </p>
+                </div>
+
+                <div style="font-size: 35px;">
+                    <div style="padding:100px 0px 0px 600px">
+                        <p style="margin-top: -20px">
+                            <span t-field="doc.name"/>
+                        </p>
+                        <p style="margin-top: -20px">
+                            <span t-field="doc.phone"/>
+                        </p>
+                        <p style="margin-top: -20px">
+                            <span t-field="doc.parent_id"/>
+                        </p>
+                        <p style="margin-top: -20px">
+                            <span t-field="doc.street"/>
+                        </p>
+                        <p style="margin-top: -20px">
+                            <span t-field="doc.city"/>
+                        </p>
+                        <p style="margin-top: -20px">
+                            <span t-field="doc.zip"/>
+                        </p>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <record id="action_report_customer_sticker" model="ir.actions.report">
+            <field name="name">Sticker Order</field>
+            <field name="model">res.partner</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">ineco_ime_customer_order.report_customer_sticker</field>
+            <field name="report_file">ineco_ime_customer_order.report_customer_sticker</field>
+            <field name="print_report_name">'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="base.model_res_partner"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>
