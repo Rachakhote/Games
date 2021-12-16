@@ -18,6 +18,7 @@
         'views/security.xml',
         'views/customer_order_report.xml',
         'views/customer_order_sticker.xml',
+        'views/customer_order_label.xml',
     ],
     # data files containing optionally loaded demonstration data
     'demo': [
